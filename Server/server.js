@@ -34,8 +34,22 @@ const app = express();
  // Serve static files for the frontend
  app.use(express.static(path.join(__dirname, 'public'))); // Serve static files from the 'public' directory
  
- const redisClient = createClient();
- redisClient.connect();
+ const client = createClient({
+  username: 'default',
+  password: process.env.REDIS_PASSWORD,
+  socket: {
+    host: process.env.REDIS_URL,
+    port: 17495
+  }
+});
+
+client.on('error', err => console.log('Redis Client Error', err));
+
+await client.connect();
+
+await client.set('foo', 'bar');
+const result = await client.get('foo');
+console.log(result)  // >>> bar
  
  // Configuration
  const MAX_DEVICES = 2; // Allow only 2 devices per user
@@ -48,8 +62,8 @@ const app = express();
  
  // MongoDB Connection
  mongoose.connect(process.env.MONGO_URI)
-   .then(() => console.log('MongoDB connected'))
-   .catch((err) => console.error('MongoDB connection error:', err));
+ .then(() => console.log('MongoDB connected'))
+ .catch((err) => console.error('MongoDB connection error:', err));
  
  // User Schema
  const userSchema = new mongoose.Schema({
