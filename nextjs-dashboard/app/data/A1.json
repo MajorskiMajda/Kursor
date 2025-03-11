@@ -1,0 +1,78 @@
+{
+  "english": [
+    {
+      "question": "What is the synonym of 'happy'?",
+      "options": [
+        "Joyful",
+        "Sad",
+        "Angry"
+      ],
+      "correctAnswer": "Joyful"
+    },
+    {
+      "question": "Which sentence is grammatically correct?",
+      "options": [
+        "She don’t like apples.",
+        "She doesn’t like apples.",
+        "She doesn’t likes apples."
+      ],
+      "correctAnswer": "She doesn’t like apples."
+    },
+    {
+      "question": "What is the synonym of 'happy'?",
+      "options": [
+        "Joyful",
+        "Sad",
+        "Angry"
+      ],
+      "correctAnswer": "Joyful"
+    },
+    {
+      "question": "Which sentence is grammatically correct?",
+      "options": [
+        "She don’t like apples.",
+        "She doesn’t like apples.",
+        "She doesn’t likes apples."
+      ],
+      "correctAnswer": "She doesn’t like apples."
+    },
+    {
+      "question": "What is the synonym of 'happy'?",
+      "options": [
+        "Joyful",
+        "Sad",
+        "Angry"
+      ],
+      "correctAnswer": "Joyful"
+    },
+    {
+      "question": "Which sentence is grammatically correct?",
+      "options": [
+        "She don’t like apples.",
+        "She doesn’t like apples.",
+        "She doesn’t likes apples."
+      ],
+      "correctAnswer": "She doesn’t like apples."
+    }
+  ],
+  "math": [
+    {
+      "question": "What is 2 + 2?",
+      "options": [
+        "3",
+        "4",
+        "5"
+      ],
+      "correctAnswer": "4"
+    },
+    {
+      "question": "What is 10 ÷ 2?",
+      "options": [
+        "2",
+        "5",
+        "10"
+      ],
+      "correctAnswer": "5"
+    }
+  ]
+}

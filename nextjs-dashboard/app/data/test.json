@@ -1,0 +1,17 @@
+[
+    {
+        "question": "What's the opposite of 'hot'?",
+        "options": ["Cold", "Warm", "Cool", "Temperature"],
+        "correctAnswer": 0
+    },
+    {
+        "question": "Which is the correct form of the verb 'to go' in past tense?",
+        "options": ["Going", "Goes", "Went", "Gone"],
+        "correctAnswer": 2
+    },
+    {
+        "question": "What is the capital of France?",
+        "options": ["Berlin", "Madrid", "Paris", "Rome"],
+        "correctAnswer": 2
+    }
+]
