@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Manage Users</title>
+</head>
+<body>
+  <h1>Admin - Manage Users</h1>
+
+  <!-- List of Users -->
+  <div id="userList"></div>
+
+  <!-- Add Course Form -->
+  <div id="addCourseForm" style="display:none;">
+    <h3>Add Course to User</h3>
+    <label for="userId">Select User:</label>
+    <select id="userId"></select>
+    <br><br>
+
+    <label for="course">Course Name:</label>
+    <input type="text" id="course" required>
+    <button onclick="addCourse()">Add Course</button>
+  </div>
+
+  <script>
+    const userListDiv = document.getElementById('userList');
+    const addCourseForm = document.getElementById('addCourseForm');
+    const userIdSelect = document.getElementById('userId');
+    const courseInput = document.getElementById('course');
+
+    // Fetch all users and display them
+    async function fetchUsers() {
+      try {
+        const response = await fetch('/api/users', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          },
+        });
+
+        const users = await response.json();
+        if (response.ok) {
+          users.forEach(user => {
+            const userDiv = document.createElement('div');
+            userDiv.innerHTML = `<strong>${user.firstName} ${user.lastName}</strong> (${user.email}) 
+            <button onclick="showAddCourseForm('${user._id}')">Add Course</button>`;
+            userListDiv.appendChild(userDiv);
+          });
+        } else {
+          alert('Error fetching users');
+        }
+      } catch (error) {
+        alert('Error fetching users');
+      }
+    }
+
+    // Show the form to add a course to the user
+    function showAddCourseForm(userId) {
+      addCourseForm.style.display = 'block';
+      userIdSelect.innerHTML = `<option value="${userId}">${userId}</option>`; // Set the selected user
+    }
+
+    // Add course to the selected user
+    async function addCourse() {
+      const userId = userIdSelect.value;
+      const course = courseInput.value;
+
+      try {
+        const response = await fetch('/api/add-course-to-user', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          },
+          body: JSON.stringify({ userId, course }),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          alert('Course added successfully');
+          window.location.reload(); // Reload the page to refresh user list
+        } else {
+          alert(result.error);
+        }
+      } catch (error) {
+        alert('Error adding course');
+      }
+    }
+
+    // Call the fetchUsers function on page load
+    fetchUsers();
+  </script>
+</body>
+</html>
