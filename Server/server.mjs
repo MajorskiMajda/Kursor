@@ -31,7 +31,7 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 // Serve static files for the frontend
-app.use(express.static(path.join(__dirname, 'public'))); // Serve static files from the 'public' directory
+app.use(express.static(path.join(process.cwd(), 'public')));
 
 // Redis Client Setup
 const client = createClient({
