@@ -1,5 +1,6 @@
 import '@/app/ui/global.css';
 import { roboto, poppins } from '@/app/ui/fonts';
+import { Analytics } from '@vercel/analytics/next';
 
 export default function RootLayout({
   children,
@@ -37,6 +38,7 @@ export default function RootLayout({
       </head>
       <body className={`${roboto.variable} ${poppins.variable} antialiased`}>
         {children}
+        <Analytics />
       </body>
     </html>
   );
