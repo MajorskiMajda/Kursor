@@ -67,7 +67,7 @@ export default function CreateCourseAdmin() {
     const token = sessionStorage.getItem(process.env.AUTH_TOKEN || "");
 
     try {
-      const res = await fetch(`${process.env.BACKEND_URL}/api/courses`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/courses`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

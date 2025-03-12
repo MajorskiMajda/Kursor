@@ -31,7 +31,7 @@ export default function Profile() {
           return;
         }
 
-        const response = await fetch(`${process.env.BACKEND_URL}/api/user`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -69,7 +69,7 @@ export default function Profile() {
     }
 
     // Send the token to the backend for confirmation
-    fetch(`${process.env.BACKEND_URL}/confirm-password-change?token=${token}`)
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/confirm-password-change?token=${token}`)
       .then(response => response.json())
       .then(data => {
         setConfirmationMessage(data.message); // Update state with confirmation message
@@ -84,7 +84,7 @@ export default function Profile() {
     try {
       const emailL = email;
       // Request to send a reset link to the email
-      const response = await fetch(`${process.env.BACKEND_URL}/api/request-password-change`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/request-password-change`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

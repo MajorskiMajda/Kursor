@@ -47,7 +47,7 @@ export default function Dashboard() {
         const token = sessionStorage.getItem(process.env.AUTH_TOKEN || "");
         if (!token) throw new Error("Nepostojeći token.");
 
-        const response = await fetch(`${process.env.BACKEND_URL}/api/user/courses`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user/courses`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -81,7 +81,7 @@ export default function Dashboard() {
         if (expiredCourses.length > 0) {
           // Delete expired courses in parallel
           const deleteRequests = expiredCourses.map((expiredCourse) =>
-            fetch(`${process.env.BACKEND_URL}/api/user/courses/${expiredCourse.courseName}`, {
+            fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user/courses/${expiredCourse.courseName}`, {
               method: "DELETE",
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -115,7 +115,7 @@ export default function Dashboard() {
         if (selectedLevel === "Svi Kursevi") {
           // Fetch videos for all courses the user has
           for (const course of courses) {
-            const response = await fetch(`${process.env.BACKEND_URL}/api/courses/${course.courseName}`);
+            const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/courses/${course.courseName}`);
             if (!response.ok) throw new Error("Greška u pri učitavanju video materijala");
 
             const data = await response.json();
@@ -124,7 +124,7 @@ export default function Dashboard() {
           setVideos(allVideos);
         } else {
           // Fetch videos for the selected course level
-          const response = await fetch(`${process.env.BACKEND_URL}/api/courses/${selectedLevel}`);
+          const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/courses/${selectedLevel}`);
           if (!response.ok) throw new Error("Greška u pri učitavanju video materijala");
 
           const data = await response.json();

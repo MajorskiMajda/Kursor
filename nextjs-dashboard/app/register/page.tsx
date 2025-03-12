@@ -46,7 +46,7 @@ export default function RegisterPage() {
             const expirationDate = new Date();
             expirationDate.setMonth(expirationDate.getMonth() + 2);
 
-            const response = await fetch(`${process.env.BACKEND_URL}/api/register`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/register`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
