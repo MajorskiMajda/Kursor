@@ -20,7 +20,7 @@ export default function ConfirmEmail() {
 
       try {
         // Pass the token as a query parameter in the fetch URL
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/confirm-email?token=${token}`, {
+        const response = await fetch(`${process.env.BACKEND_URL}/api/confirm-email?token=${token}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

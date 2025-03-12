@@ -67,7 +67,7 @@ export default function AddCoursePage() {
     const token = sessionStorage.getItem(process.env.AUTH_TOKEN || "");
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/add-course`, {
+      const response = await fetch(`${process.env.BACKEND_URL}/api/add-course`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

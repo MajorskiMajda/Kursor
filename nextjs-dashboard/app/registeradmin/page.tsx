@@ -99,7 +99,7 @@ export default function RegisterPage() {
 
       const token = sessionStorage.getItem(process.env.AUTH_TOKEN || "");
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/register`, {
+      const response = await fetch(`${process.env.BACKEND_URL}/api/register`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',

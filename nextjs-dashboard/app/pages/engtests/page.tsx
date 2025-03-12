@@ -33,7 +33,7 @@ const TestSelectionPage: React.FC = () => {
         const token = sessionStorage.getItem(process.env.AUTH_TOKEN || "");
         if (!token) throw new Error("Nepostojeći token.");
 
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user/courses`, {
+        const response = await fetch(`${process.env.BACKEND_URL}/api/user/courses`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
