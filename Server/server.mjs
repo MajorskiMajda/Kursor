@@ -21,13 +21,16 @@ const app = express();
 // Middleware
 const allowedOrigins = [process.env.FRONTEND_URL];
 
+// CORS Configuration
 const corsOptions = {
-  origin: process.env.FRONTEND_URL, // Change this to your frontend's URL
+  origin: process.env.FRONTEND_URL, // Set to your Vercel URL via Render env
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
 
+// Use cors middleware
 app.use(cors(corsOptions));
+
 app.use(bodyParser.json());
 
 // Serve static files for the frontend
